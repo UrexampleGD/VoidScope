@@ -10,8 +10,6 @@ if type(shared.CreateTab) ~= "function"
 end
 
 local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
 local player = Players.LocalPlayer
 
 local GUN_TOOL_NAME = "Gun"
@@ -52,11 +50,6 @@ local Styles = {
     { Name = "WhiteScope", Texture = WHITESCOPE_TEXTURE_ID, Beam = WHITE },
     { Name = "GhostScope", Texture = nil, Beam = WHITE, Ghost = true },
 }
-
-local function safeCall(fn, ...)
-    if type(fn) ~= "function" then return end
-    pcall(fn, ...)
-end
 
 local function getObjectPosition(object)
     if object:IsA("BasePart") then
@@ -567,8 +560,7 @@ workspace.DescendantAdded:Connect(function(object)
     end)
 end)
 
-local ICON_PATH = "/Arkineku/Better-Shoot-Murder-Button-/refs/heads/main/Button"
-local my_own_tab = shared.CreateTab("Gun Customizer", ICON_PATH)
+local my_own_tab = shared.CreateTab("Gun Customizer")
 
 if not my_own_tab or type(my_own_tab.AddSection) ~= "function" then
     return
